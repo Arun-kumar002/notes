@@ -1,0 +1,405 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Arun-kumar002 
+shashikunal
+/
+api-testing
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+api-testing/notes.txt
+@taranjeetsing
+taranjeetsing basic auth
+Latest commit ceb3716 on Jul 6, 2021
+ History
+ 1 contributor
+364 lines (256 sloc)  13.8 KB
+
+What is web services?
+
+A web service is any piece of software is available over the network (internet) and uses s standardized XML messaging System 
+
+1 : ALL web services are API's 
+2 : web service only be hosted on web server (CLOUD) (INTERNET ****************)
+3 : LOCAL web server will not work with web service 
+4 : a web service uses limited communication like SOAP , REST , XMP-RPC 
+5 : web service is interaction between servers over an internet(network)
+
+
+API 
+    An API is a set of programming code that enables data transmission between one software product and another
+
+1 : ALL api's are NOT web services
+2 : API can be hosted with Application(LOCAL server) or cloud server (internet)
+3 : API may use any style of communication like SOAP , REST , GRAPhQL , desktop app , android , 
+4 : APi as an interface between two Applications
+
+
+Similarities between API and WEB SERVICE 
+
+BOTH are accessed through HTTP/HTTPS to enable communication between  service provider and consumer
+BOTH are call a function , process the data and receive a response from provider 
+
+
+SOAP and REST and XML-RPC
+WEB SERVICE is standard GIVEN by W3c(World Wide Web Consortium)
+
+before web service 
+1 : CORBA 
+2 : DCOM (microsoft and IBM)
+3 : RMI (SUN micro system)
+
+4 // !WEB SERVICE is standard GIVEN by W3c(World Wide Web Consortium)
+
+
+
+WEB SERVICE IMPLEMENTED WITH IN TWO WAYS 
+1 : SOAP  => SIMPLE OBJECT ACCESS PROTOCOL => medium => HTTP(hyper text transfer protocol) format => XML
+2 : REST  => REPRESENTATIONAL STATE TRANSFER => medium => HTTP(hyper text transfer protocol) format => xml , json , csv , anything ....
+
+
+DESCRIBE web service 
+//!================================SOAP WEB SERVICE ================================/
+SOAP service 
+   = >  It is PROTOCOL  for designing web services over an HTTP , FTP , ....
+    WSDL => WEB SERVICE DESCRIPTION LANGUAGE 
+            STANDARD FORMAT FOR DESCRIBING A WEB SERVICE 
+            DEVELOPED BY MICROSOFT AND IBM
+   WSDL IS AN XML BASED PROTOCOL FOR EXCHANGING DATA BETWEEN SERVERS 
+   UDDI => universal description discovery Integration
+        xml based worldwide business registry
+
+        UDDI stands for Universal Description, Discovery and Integration. It provides a directory of Web-services interfaces (written in WSDL). It uses SOAP for queries and modifications.
+=> FORMATE SHOULD BE XML ONLY
+=> MEDIUM LIKE HTTP , SMTP , FTP
+=> calling by RPC(remote procedure call)
+=> performance slow 
+=> WSDL => UDDI => fro communication between provider and consumer
+
+//!================================RESTfull WEB SERVICE ================================/
+
+RESTfull WEB SERVICES ***************
+
+   => It is an architecture style for designing web services over an HTTP/HTTPS
+   => RESTfull web service doesn't  enforce any rule ....
+   => FORMATE like XML , JSON , CSV , TEXT .........
+   => MEDIUM SHOULD BE HTTP/HTTPS
+   => CALLING BY URL PATH (example for url www.google.com)
+   => USEs JSON or xml for communication send or receive
+   performance better 
+   90% companies are using REST web service
+
+
+  ***interview 
+   !Architectural Constraints
+    RESTFULL WEB SERVICE defines 6 Architectural Constraints
+    1 : client-server 
+        This constraint essentially means that client application and server application MUST be able to evolve separately without any dependency on each other. A client should know only resource URIs, and that’s all.
+
+    2 : Uniform interface 
+    
+       1 =>  Resource based example (api/products)
+       Resource-Based: Individual resources are identified in requests. For example: API/users.
+
+       2 >  manipulation of Resource through representation
+       Manipulation of Resources Through Representations: Client has representation of resource and it contains enough information to modify or delete the resource on the server, provided it has permission to do so. Example: Usually user get a user id when user request for a list of users and then use that id to delete or modify that particular user.
+
+      3 : self- descriptive messages 
+      Self-descriptive Messages: Each message includes enough information to describe how to process the message so that server can easily analyses the request.
+
+      4 : HATEOAS (HYPERMEDIA) //it needs links to communicate other resources
+
+        Hypermedia as the Engine of Application State (HATEOAS): It need to include links for each response so that client can discover other resources easily.
+
+
+  3 : stateless 
+         Stateless: It means that the necessary state to handle the request is contained within the request itself and server would not store anything related to the session. 
+         
+
+    4 : Cacheable 
+        Cacheable: Every response should include whether the response is cacheable or not and for how much duration responses can be cached at the client side. Client will return the data from its cache for any subsequent request and there would be no need to send the request again to the server
+
+    5 : layered System
+        Layered System tells the the architecture of the server can be layered into multiple servers(layers) like security layer , load balancing layer , cache layer , api layer , authenticated layer
+        without letting the client know about it 
+
+
+    6 : code on demand(optional) 
+        REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts
+
+
+//*============================HTTP =========================*/
+HTTP  => HYPER TEXT TRANSFER PROTOCOL  => DEFAULT port NUMBER 80
+HTTPS => HYPER TEXT TRANSFER PROTOCOL WITH SECURE => DEFAULT PORT NUMBER 443 (PAYMENT)
+
+HTTP is a protocol which allows the fetching of resources, such as HTML documents , CSS , JS , IMAGES .... 
+It is the foundation of any data exchange on the Web and it is a client-server protocol
+
+HTTP METHODS (WEB APPLICATION OR MOBILE APPLICATION OR REST API)
+GET 
+    ?GET IS ONE OF THE IMPORTANT HTTP METHOD FOR FETCHING RESOURCES FROM SERVER 
+    !GET METHOD IS ONLY FOR RETRIEVED DATA FROM SERVER 
+    !GET METHOD doesn't HAVING BODY OR PAYLOAD
+    GET requests can be cached
+    GET requests remain in the browser history
+    GET requests can be bookmarked
+    GET requests should never be used when dealing with sensitive data
+   !GET METHOD DEFAULT HTTP HEADER =>  CONTENT-TYPE  => TEXT/HTML
+
+POST 
+    ?!POST IS ONE OF THE IMPORTANT HTTP METHOD FOR SENDING DATA TO SERVER 
+    !form data like html form HTTP POST or PUT
+    create NEW data should use HTTP POST METHOD
+    POST METHOD SHOULD HAVE PAYLOAD OR FORM BODY (INFORMATION)
+
+    BODY REQUEST IS INDICATED WITH CONTENT-TYPE HEADER 
+     IF IT IS HTML FORM => APPLICATION/X-WWW-FORM-URLENCODED
+     IF ANY UPLOAD FILE => MULTIPART-FORM-DATA  => HEADER
+    IF API => CONTENT-TYPE SHOULD BE  APPLICATION/JSON
+
+   POST requests are never cached
+   POST requests do not remain in the browser history
+   POST requests cannot be bookmarked
+   POST requests have no restrictions on data length
+   Data passed using the POST method will not visible in query parameters in browser URL.
+
+   !POST METHOD DEFAULT HTTP HEADER =>  CONTENT-TYPE  => APPLICATION/X-WWW-FORM-URLENCODED
+
+PUT 
+    PUT IS ALSO ONE OF THE HTTP REQUEST METHOD 
+    PUT method is used to update resource available on the server. ... You can use it to make a new resource or overwrite an existing one. PUT requests that the enclosed entity must be stored under the supplied requested URI (Uniform Resource Identifier).
+    PUT METHOD SHOULD HAVE PAYLOAD OR FORM BODY (INFORMATION)
+    !PUT METHOD DEFAULT HTTP HEADER =>  CONTENT-TYPE  => APPLICATION/X-WWW-FORM-URLENCODED
+
+
+PATCH 
+     The PATCH method is a request method supported by the Hypertext Transfer Protocol (HTTP) protocol for making partial changes to an existing resource. The PATCH method provides an entity containing a list of changes to be applied to the resource requested using the HTTP Uniform Resource Identifier (URI).
+
+DELETE 
+   THE DELETE METHOD IS USED FOR DELETING HTTP REQUEST RESOURCES 
+
+
+    CONNECT 
+        The HTTP CONNECT method starts two-way communications with the requested resource. It can be used to open a tunnel. For example, the CONNECT method can be used to access websites that use SSL (HTTPS). The client asks an HTTP Proxy server to tunnel the TCP connection to the desired destination
+
+        SYNTAX 
+        CONNECT WWW.PHONEPE.COM:443
+
+
+
+        POST      GET     PUT       DELETE
+CRUD => CREATE || READ || UPDATE  ||DELETE
+
+HTTP RESPONSE STATUS CODES 
+
+    HTTP RESPONSE CODES INDICATES WEATHER REQUEST HAS BEEN SUCCESSFULLY COMPLETED OR NOT  
+    5 RESPONSE CODE TYPES
+    
+    1 : INFORMATIONAL RESPONSES(100 , 199);
+        100 CONTINUE 
+        101 SWITCH PROTOCOL
+
+    2 : SUCCESSFULL RESPONSES (200 , 299);
+        200 => OK (GET, POST , PUT , DELETE)
+        201 => CREATED (POS202 => ACCEPTED 
+
+    3 : REDIRECTS (300 , 399);
+        301 => MOVED PERMANENTLY
+        302 => FOUND 
+        304 => NOT MODIFIED 
+
+    4 : CLIENT-ERRORS (400 , 499);
+        400 => BAD REQUEST 
+        401 => UNAUTHORIZED 
+        402 => PAYMENT REQUIRED 
+        403 => FORBIDDEN
+        404 => NOT FOUND 
+
+    5 : SERVER-ERRORS(500 , 599)
+        500 => INTERNAL SERVER ERROR 
+        501 => NOT IMPLEMENTED 
+        502 => BAD GATEWAY 
+        503 => SERVER UNAVAILABLE 
+        504 => GATEWAY TIMEOUT
+
+
+
+
+IF it is  API
+ //?   CONTENT-TYPE = APPLICATION/JSON
+
+IF IT IS HTML 
+//?   CONTENT-TYPE = TEXT/HTML
+
+IF IT IS PLAIN TEXT
+
+//? CONTENT-TYPE = TEXT/PLAIN 
+
+
+
+
+WHAT IS JSON?
+STANDS JAVASCRIPT OBJECT NOTATION
+    JSON IS LIGHTWEIGHT FORMAT FOR DATA EXCHANGING OR TRANSFERRING DATA BETWEEN SERVER  AND CLIENT /SERVER TO SERVER 
+    JSON CAN STORE DATA AND TRANSPORTING DATA
+    JSON is language independent *
+    JSON is "self-describing" and easy to understand
+    FOR API COMMUNICATION USES JSON OR XML FORMAT 
+
+
+    JSON SUPPORTED  DATA TYPES 
+
+    STRING ""
+    NUMBER 10
+    BOOLEAN true
+    ARRAY []
+    OBJECT {}
+    NULL 
+
+    JSON IS IDENTICAL TO JAVASCRIPT OBJECTS 
+
+    JSON SYNTAX RULES                            KAY   :    VALUE            
+   //?1 DATA SHOULD BE KEY AND VALUE PAIR LIKE {"name" : "shashi"}
+   2 : DATA IS SEPARATED BY  COMMAS
+
+    //!JSON SYNTAX
+   {
+       "username' : "shashi",
+       "company":"Qspiders",
+       "salary":200000,
+       "isAvailable" : true,
+       "skills" : ["api testing" , "selenium" , "manual testing"],
+       "obj" : {
+           "user" : "manu"
+       }
+   }
+
+JSON METHODS 
+JSON.parse(); //converting json object into JAVASCRIPT OBJECT
+JSON.stringify(); //converting JAVASCRIPT object into JSON OBJECT
+
+**** interview QST //difference between JSON and XML 
+JSON                                    XML 
+
+ Javascript object notation             Extensible Markup Language 
+ JSON is easy to learn                   XML is Quit complex compare to JSON 
+ Json is simple to read and write        XML more COmplex to read and write 
+ JSON is Data oriented                   XML is DOCUMENT oriented 
+ JSON is less secure compare to XML      XML IS MORE SECURE 
+ JSON SUPPORTS ARRAY AND OBJECTS         XML doesn't SUPPORT ARRAY AND OBJECTS
+ {                                       
+                                          <Qspiders>
+                                            <name>paddu</name>
+                                            <age>20</age>
+                                            <girlFRD></girlFRD>
+                                          </Qspiders>
+     "name" : "paddu",
+     "age" : 20
+ }
+
+
+
+
+ postman  variables
+    1 : GLOBAL SCOPE  (global variable) ;
+        IT ACCESSIBLE THROUGHOUT THE WORK SPACE
+
+    2 : COLLECTION SCOPE (COLLECTION VARIABLE)
+         IT ACCESSIBLE ONLY COLLECTION LEVEL
+
+    3 : Environment Variables 
+           Development Environment (DEVELOPER)
+           Staging Environment (TESTING ENVIRONMENT)
+           Production Environment (live application or already deployed on cloud remote server)
+        IT SUPPORTS ROLE BASED ACCESS LEVELS 
+        ONLY ONE ENVIRONMENT CAN SELECT AT A TIME
+    
+    4 : LOCAL VARIABLE 
+        LOCAL VARIABLE IS TEMPORARY VARIABLE IT IS ACCESSIBLE ONLY THROUGH SCRIPTS
+
+   5 : DATA VARIABLE
+        DATA VARIABLE  COMES FROM EXTERNAL SOURCES FILE LIKE JSON , CSV , TEXT
+        DEFINE DATA WHEN YOU ARE RUNNING ON COLLECTION RUNNER
+
+
+        BY USING SCRIPTING DECLARE VARIABLE 
+        //?GLOBAL VARIABLE => select test tab in postman
+        pm.globals.set("BASE_URL" , "api.openweathermap.org/data/2.5/weather");
+        pm.globals.set("CITY_NAME" , "mysore");
+        pm.globals.set("APPID" , "1f9121f7c5e7b18129a1498b1f423a9e")
+
+        //!Environment variable by using script 
+
+        pm.environment.set("BASE_URL" , "api.openweathermap.org/data/2.5/weather");
+        pm.environment.set("CITY_NAME" , "mysore");
+        pm.environment.set("APPID" , "1f9121f7c5e7b18129a1498b1f423a9e")
+
+        //!COLLECTION LEVEL VARIABLE BY USING SCRIPT
+
+        pm.collectionVariables.set("BASE_URL" , "api.openweathermap.org/data/2.5/weather");
+        pm.collectionVariables.set("CITY_NAME" , "mysore");
+        pm.collectionVariables.set("APPID" , "1f9121f7c5e7b18129a1498b1f423a9e");
+
+
+        LOCAL VARIABLE 
+        pm.variables.set("username" , "paddu");
+        pm.variables.set("age" , 50);
+
+        var username = pm.variables.get("username");
+        var age = pm.variables.get("age");
+
+        console.log(username);
+        console.log(age)
+
+
+====================AUTHORIZATION =====================
+Apis use Authorization to ensure that client request access data securely.
+can Involve authenticated sender of request and verifying that data permission to access or manipulated data
+
+1 : Inherit auth IT IS GETTING ITS PARENT
+2 : no auth
+3 : API KEY
+4 : Bearer token 
+5 : basic auth 
+6 : Digest Auth 
+7 : oAuth1
+8 : oAuth2 
+
+
+basic Auth 
+    username and password
+
+Basic auth
+Basic authentication involves sending a verified username and password with your request. In the request Authorization tab, select Basic Auth from the Type dropdown list.
+
+//!https://postman-echo.com/basic-auth
+BASIC AUTH
+    USERNAME AND PASSWORD
+    => header 
+        Authorization = "postman:password"
+
+    
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
